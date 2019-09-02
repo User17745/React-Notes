@@ -171,5 +171,58 @@ layout: default
                             </code>
                     </li>
                 </ol>
-            <h3>2.3. States</h3>
-                
+            <h3>2.3. States (State Object)</h3>
+                <ul>
+                    <li>Provides data to the instances of the a component.</li>
+                    <li>We can add state to a class component. We do it right above the render method declaration.</li>
+                    <li>
+                        Syntax:
+                            <code>
+                                state = {
+                                    componentName = [
+                                        {
+                                            property1: value1,
+                                            property2: value2,
+                                            .
+                                            .
+                                        },
+                                        {
+                                            property1: value1,
+                                            property2: value2,
+                                            .
+                                            .
+                                        },
+                                        .
+                                        .
+                                        .
+                                    ]
+                                }
+                            </code>
+                    </li>
+                    <li>
+                        We can then access the properties of the state (<code>propes</code>) within the rest of the class (mostly within the render method) using <code>this</code> keyword like so:
+                            <code>
+                                { this.state.componentName }
+                            </code>
+                    </li>
+                    <li>
+                        We pass it within a component like an attribute to the HTML tag:
+                            <code>
+                                <ComponentName componentName={this.state.componentName} />
+                            </code>
+                    </li>
+                    <li>
+                        We can then access them inside the component using <code>this</code> and <code>props</code> keyword like so:
+                            <code>
+                                this.props.componentName
+                            </code>
+                    </li>
+                    <li>
+                        We can use the <code>map()</code> method in order to parse through all of the data.
+                            <code>
+                                return this.props.componentName.map((data) => (
+                                        <h2>data.title</h2>
+                                    ));
+                            </code>
+                    </li>
+                </ul>

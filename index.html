@@ -50,7 +50,7 @@
                         <li><code>npm run build</code> wil come compile all the code for browser to read.</li>
                     </ul>
 
-                <h3>Anatomy of a Component.</h3>
+                <h3>1.5. Anatomy of a Component.</h3>
                     <code>
                         Class Post extends React.Component {
                             state = {
@@ -68,5 +68,25 @@
                             }
                         }
                     </code>
+
+                 <h3>1.6. Steps to get started</h3>   
+                    <ul>
+                        <li>Make sure NodeJS is installed (needed in order to use npm).</li>
+                        <li>Use <strong>Create React App</strong> to make a boiler plate code. (<a href="https://github.com/facebook/create-react-app" target="_blank">GitHub Repo for Create React App</a>). Use CLI command in the desired directory for this:</li>
+                            <code>npx create-react-app my-app</code>
+                    </ul>
+
+                <h3>1.7. Anatomy of a React App</h3>
+                    
+                    <h4>1.7.1. package.json</h4>
+                        <p>Keeps track of all our project dependencies and scripts.</p>
+
+                    <h4>1.7.2. index.html</h4>
+                        <ul>
+                            <li>Sits inside the <strong>public</strong> directory of the project.</li>
+                            <li>React is a single page application framework (a library really), i.e., everything runs from a single page and index.html is that page.</li>
+                            <li>Everything is output onto <code><div id="root"></div></code> div. Or we can say the main app component outputs here and everything is inside of that.</li>
+                            <li>We can also use this page to include our CDNs in the header tag if we needs (eg. Bootstrap, fontAwesome, etc).</li>
+                        </ul>
 </body>
 </html>

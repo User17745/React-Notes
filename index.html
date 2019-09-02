@@ -199,30 +199,41 @@ layout: default
                                 }
                             </code>
                     </li>
-                    <li>
-                        We can then access the properties of the state (<code>propes</code>) within the rest of the class (mostly within the render method) using <code>this</code> keyword like so:
-                            <code>
-                                { this.state.componentName }
-                            </code>
-                    </li>
-                    <li>
-                        We pass it within a component like an attribute to the HTML tag:
-                            <code>
-                                <ComponentName componentName={this.state.componentName} />
-                            </code>
-                    </li>
-                    <li>
-                        We can then access them inside the component using <code>this</code> and <code>props</code> keyword like so:
-                            <code>
-                                this.props.componentName
-                            </code>
-                    </li>
-                    <li>
-                        We can use the <code>map()</code> method in order to parse through all of the data.
-                            <code>
-                                return this.props.componentName.map((data) => (
-                                        <h2>data.title</h2>
-                                    ));
-                            </code>
-                    </li>
                 </ul>
+                <h4>2.3.1 Properties (a.k.a Propes)</h4>
+                    <ul>
+                        <li>
+                            We can then access the properties of the state (<code>propes</code>) within the rest of the class (mostly within the render method) using <code>this</code> keyword like so:
+                                <code>
+                                    { this.state.componentName }
+                                </code>
+                        </li>
+                        <li>
+                            We pass it within a component like an attribute to the HTML tag:
+                                <code>
+                                    <ComponentName componentName={this.state.componentName} />
+                                </code>
+                        </li>
+                        <li>
+                            We can then access them inside the component using <code>this</code> and <code>props</code> keyword like so:
+                                <code>
+                                    this.props.componentName
+                                </code>
+                        </li>
+                        <li>
+                            We can use the <code>map()</code> method in order to parse through all of the data.
+                                <code>
+                                    return this.props.componentName.map((data) => (
+                                            <h2>data.title</h2>
+                                        ));
+                                </code>
+                                <p>Note: The above code will give us an error because map creates and lists should have a unique key.</p>
+                                    <code>
+                                        Warning: Each child in a list should have a unique "key" prop. See https://fb.me/react-warning-keys for more information.
+                                    </code>
+                                <p>To avoid this, we must add a <code>key</code> attribute to the component's tag where we may include something like an ID:</p>
+                                    <code>
+                                        <ComponentName componentName={componentName} key={componentName.id} />
+                                    </code>
+                        </li>
+                    </ul>

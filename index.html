@@ -101,8 +101,54 @@ layout: default
                         <li>It is mostly just like any other react component.</li>
                         <li>It has a <code>render</code> method which returns <strong>JSX</strong> inside it. JSX looks like HTML.
                             <ol>
-                                Notes:
-                                <li>render() is called the <strong>life cycle method</strong>.</li> 
-                                <li>JSX is an easily way to write JS for output in the browser.</li>
+                                Note:
+                                    <li>render() is called the <strong>life cycle method</strong>.</li> 
+                                    <li>JSX is an easily way to write JS for output in the browser. We can use JS variables in it using curly braces <code>{ variableName }</code> and we can't use <code>class</code> attribute in tags, instead we use the <code>className</code> attribute.</code></li>
                             </ol>
                     </ul>
+        
+        <h2>2. Starting with development.</h2>
+            <h3>2.1. Creating a new Component.</h3>
+                <ol>
+                    <li>Move to the src directory of the project.</li>
+                    <li>Create a new file and name it with a <code>.js</code> extension at the end.</li>
+                    <li>
+                        Import the library:
+                            <code>import Rect, { Component } from 'react';</code>
+                    </li>
+                    <li>
+                        Add a class with the same name as the file which will extend the <code>Component</code> class.
+                            <code>
+                                class ComponentName extends Component {
+                                }
+                            </code>
+                    </li>
+                    <li>
+                        Add a <code>render()</code> method to the class which will return some JSX code.
+                            <code>
+                                render(){
+                                    return (
+                                        //JSX Code.
+                                    );
+                                }
+                            </code>
+                    </li>
+                    <li>
+                            Export the class at the end of the file.
+                                <code>
+                                    export default ComponentName;
+                                </code>
+                    </li>
+                    <li>
+                        Go to App.js and import the new component to it.
+                            <code>import ComponentName from './components/ComponentName';</code>
+                    </li>
+                    <li>
+                        To embed the component into the App.js's render method, just do it like a custom tag with the Component's name.
+                            <code>
+                                <ComponentName />
+                            </code>
+                    </li>
+                </ol>
+            <h3>2.2. States</h3>
+                

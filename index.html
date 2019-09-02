@@ -1,92 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>React</h1>
-    
-        <h2>1. Basic Info</h2>
-            
-            <h3>1.1. What is it?</h3>
+---
+layout: default
+---
+
+<h1>React</h1>
+
+    <h2>1. Basic Info</h2>
+        
+        <h3>1.1. What is it?</h3>
+            <ul>
+                <li>It is a JS library but it acts as a framework.</li>
+                <li>Used for building UI and front-end apps.</li>
+            </ul>
+
+        <h3>1.2. Why use it?</h3>
+            <ul>
+                <li>Makes front-end development faster and easier.</li>
+                <li>Uses self contained, independent components with their own state.</li>
+                <li>More interactive UIs</li>
+                <li>Uses Virtual DOM -> Makes manipulation tasks cheaper. </li>
+                <li>Uses JSX - Easily incorporate JS in markup.</li>
+                <li>Makes it easier to work with teams.</li>
+            </ul>
+        
+        <h3>1.3. What is State?</h3>
+            <ul>
+                <li>It is an object that determines how components renders and behaves.</li>
+                <li>We can also have <strong>application</strong> level state using a state manager like <strong>Redux</strong> or Reacts own <strong>context API</strong>.</li>
+            </ul>
+
+            <code>
+                state = {
+                    title: 'xxx',
+                    body: 'yyy',
+                    isFeatured: true
+                }
+            </code>
+
+            <h3>1.4. How to get started?</h3>
                 <ul>
-                    <li>It is a JS library but it acts as a framework.</li>
-                    <li>Used for building UI and front-end apps.</li>
+                    <li>We use <strong>Create React App</strong> to setup a boilerplate code of our app.</li>
+                    <li>It is CLI tool.</li>
+                    <li>Automatically takes care of configurations using webpage.</li>
+                    <li>Comes with dev server and hot reload.</li>
+                    <li><code>npm run build</code> wil come compile all the code for browser to read.</li>
                 </ul>
 
-            <h3>1.2. Why use it?</h3>
-                <ul>
-                    <li>Makes front-end development faster and easier.</li>
-                    <li>Uses self contained, independent components with their own state.</li>
-                    <li>More interactive UIs</li>
-                    <li>Uses Virtual DOM -> Makes manipulation tasks cheaper. </li>
-                    <li>Uses JSX - Easily incorporate JS in markup.</li>
-                    <li>Makes it easier to work with teams.</li>
-                </ul>
-            
-            <h3>1.3. What is State?</h3>
-                <ul>
-                    <li>It is an object that determines how components renders and behaves.</li>
-                    <li>We can also have <strong>application</strong> level state using a state manager like <strong>Redux</strong> or Reacts own <strong>context API</strong>.</li>
-                </ul>
-
+            <h3>1.5. Anatomy of a Component.</h3>
                 <code>
-                    state = {
-                        title: 'xxx',
-                        body: 'yyy',
-                        isFeatured: true
+                    Class Post extends React.Component {
+                        state = {
+                            title: 'Post One',
+                            body: 'This is post one.'
+                        }
+
+                        render(){
+                            return (
+                                <div>
+                                    <h3>{ this.state.title }</h3>
+                                    <p>{ this.state.body }</p>
+                                </div>
+                            )
+                        }
                     }
                 </code>
 
-                <h3>1.4. How to get started?</h3>
+                <h3>1.6. Steps to get started</h3>   
+                <ul>
+                    <li>Make sure NodeJS is installed (needed in order to use npm).</li>
+                    <li>Use <strong>Create React App</strong> to make a boiler plate code. (<a href="https://github.com/facebook/create-react-app" target="_blank">GitHub Repo for Create React App</a>). Use CLI command in the desired directory for this:</li>
+                        <code>npx create-react-app my-app</code>
+                </ul>
+
+            <h3>1.7. Anatomy of a React App</h3>
+                
+                <h4>1.7.1. package.json</h4>
+                    <p>Keeps track of all our project dependencies and scripts.</p>
+
+                <h4>1.7.2. index.html</h4>
                     <ul>
-                        <li>We use <strong>Create React App</strong> to setup a boilerplate code of our app.</li>
-                        <li>It is CLI tool.</li>
-                        <li>Automatically takes care of configurations using webpage.</li>
-                        <li>Comes with dev server and hot reload.</li>
-                        <li><code>npm run build</code> wil come compile all the code for browser to read.</li>
+                        <li>Sits inside the <strong>public</strong> directory of the project.</li>
+                        <li>React is a single page application framework (a library really), i.e., everything runs from a single page and index.html is that page.</li>
+                        <li>Everything is output onto <code><div id="root"></div></code> div. Or we can say the main app component outputs here and everything is inside of that.</li>
+                        <li>We can also use this page to include our CDNs in the header tag if we needs (eg. Bootstrap, fontAwesome, etc).</li>
                     </ul>
 
-                <h3>1.5. Anatomy of a Component.</h3>
-                    <code>
-                        Class Post extends React.Component {
-                            state = {
-                                title: 'Post One',
-                                body: 'This is post one.'
-                            }
-
-                            render(){
-                                return (
-                                    <div>
-                                        <h3>{ this.state.title }</h3>
-                                        <p>{ this.state.body }</p>
-                                    </div>
-                                )
-                            }
-                        }
-                    </code>
-
-                 <h3>1.6. Steps to get started</h3>   
+                <h4>1.7.3. index.js</h4>
                     <ul>
-                        <li>Make sure NodeJS is installed (needed in order to use npm).</li>
-                        <li>Use <strong>Create React App</strong> to make a boiler plate code. (<a href="https://github.com/facebook/create-react-app" target="_blank">GitHub Repo for Create React App</a>). Use CLI command in the desired directory for this:</li>
-                            <code>npx create-react-app my-app</code>
+                        <li>Sits in src directory of the project.</li>
+                        <li>It produces the code that is output onto to the index.html</li>
+                        <li>We import the libraries(react, react-dom, etc,.), css files, main App component, etc., the beginning of this file. Note: the App component is the main component that wraps around everything.</li>
+                        <li>It also renders the App component <code><App /></code> into the root div of index.html</li>
                     </ul>
 
-                <h3>1.7. Anatomy of a React App</h3>
-                    
-                    <h4>1.7.1. package.json</h4>
-                        <p>Keeps track of all our project dependencies and scripts.</p>
-
-                    <h4>1.7.2. index.html</h4>
-                        <ul>
-                            <li>Sits inside the <strong>public</strong> directory of the project.</li>
-                            <li>React is a single page application framework (a library really), i.e., everything runs from a single page and index.html is that page.</li>
-                            <li>Everything is output onto <code><div id="root"></div></code> div. Or we can say the main app component outputs here and everything is inside of that.</li>
-                            <li>We can also use this page to include our CDNs in the header tag if we needs (eg. Bootstrap, fontAwesome, etc).</li>
-                        </ul>
-</body>
-</html>
+                <h4>1.7.4. App.js</h4>
+                    <ul>
+                        <li>Sits in src directory of the project.</li>
+                        <li>It is the component which is included by the index.js file into the root div of the index.html file.</li>
+                        <li>First of all, we import React and React Component class into it.</li>
+                        <li>We also import the app logo and all wide css <strong>App.css</strong>.</li>
+                        <li>It is mostly just like any other react component.</li>
+                        <li>It has a <code>render</code> method which returns <strong>JSX</strong> inside it. JSX looks like HTML.
+                            <ol>
+                                Notes:
+                                <li>render() is called the <strong>life cycle method</strong>.</li> 
+                                <li>JSX is an easily way to write JS for output in the browser.</li>
+                            </ol>
+                    </ul>

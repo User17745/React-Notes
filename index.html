@@ -170,69 +170,144 @@ layout: default
                     </li>
                 </ol>
 
-    <h2>2.2. States (State Object)</h2>
-        <ul>
-            <li>Provides data to the instances of the a component.</li>
-            <li>We can add state to a class component. We do it right above the render method declaration.</li>
-            <li>
-                Syntax:
-                    <code>
-                        state = {
-                            componentName = [
-                                {
-                                    property1: value1,
-                                    property2: value2,
-                                    .
-                                    .
-                                },
-                                {
-                                    property1: value1,
-                                    property2: value2,
-                                    .
-                                    .
-                                },
-                                .
-                                .
-                                .
-                            ]
-                        }
-                    </code>
-            </li>
-        </ul>
-        <h3>2.2.1. Properties (a.k.a Propes)</h3>
+        <h3>2.2. States (State Object)</h2>
             <ul>
+                <li>Provides data to the instances of the a component.</li>
+                <li>We can add state to a class component. We do it right above the render method declaration.</li>
                 <li>
-                    We can then access the properties of the state (<code>propes</code>) within the rest of the class (mostly within the render method) using <code>this</code> keyword like so:
+                    Syntax:
                         <code>
-                            { this.state.componentName }
+                            state = {
+                                componentName = [
+                                    {
+                                        property1: value1,
+                                        property2: value2,
+                                        .
+                                        .
+                                    },
+                                    {
+                                        property1: value1,
+                                        property2: value2,
+                                        .
+                                        .
+                                    },
+                                    .
+                                    .
+                                    .
+                                ]
+                            }
                         </code>
-                </li>
-                <li>
-                    We pass it within a component like an attribute to the HTML tag:
-                        <code>
-                            <ComponentName componentName={this.state.componentName} />
-                        </code>
-                </li>
-                <li>
-                    We can then access them inside the component using <code>this</code> and <code>props</code> keyword like so:
-                        <code>
-                            this.props.componentName
-                        </code>
-                </li>
-                <li>
-                    We can use the <code>map()</code> method in order to parse through all of the data.
-                        <code>
-                            return this.props.componentName.map((data) => (
-                                    <p>data.title</p>
-                                ));
-                        </code>
-                        <p>Note: The above code will give us an error because map creates and lists should have a unique key.</p>
-                            <code>
-                                Warning: Each child in a list should have a unique "key" prop. See https://fb.me/react-warning-keys for more information.
-                            </code>
-                        <p>To avoid this, we must add a <code>key</code> attribute to the component's tag where we may include something like an ID:</p>
-                            <code>
-                                <ComponentName componentName={componentName} key={componentName.id} />
-                            </code>
                 </li>
             </ul>
+            <h4>2.2.1. Properties (a.k.a Props)</h4>
+                <ul>
+                    <li>
+                        We can then access the properties of the state (<code>props</code>) within the rest of the class (mostly within the render method) using <code>this</code> keyword like so:
+                            <code>
+                                { this.state.componentName }
+                            </code>
+                    </li>
+                    <li>
+                        We pass it within a component like an attribute to the HTML tag:
+                            <code>
+                                <ComponentName componentName={this.state.componentName} />
+                            </code>
+                    </li>
+                    <li>
+                        We can then access them inside the component's render method using <code>this</code> and <code>props</code> keyword like so:
+                            <code>
+                                this.props.componentName
+                            </code>
+                    </li>
+                    <li>
+                        In order to access props outside of the render method and within other methods of the component, we can either define those methods as arrow functions or we would need to <strong>bind</strong> <code>this</code> inside the render method while calling the other method.
+                            <code>
+                                <input type="button" onClick={this.methodName.bind(this)}/>;
+                            </code>
+                        <p>Else we will see the following error message:</p>
+                            <code>
+                                TypeError: Cannot read property 'props' of undefined
+                            </code>
+                    </li>
+                    <li>
+                        We can use the <code>map()</code> method in order to parse through all of the data.
+                            <code>
+                                return this.props.componentName.map((data) => (
+                                        <p>data.title</p>
+                                    ));
+                            </code>
+                            <p>Note: The above code will give us an error because map creates and lists should have a unique key.</p>
+                                <code>
+                                    Warning: Each child in a list should have a unique "key" prop. See https://fb.me/react-warning-keys for more information.
+                                </code>
+                            <p>To avoid this, we must add a <code>key</code> attribute to the component's tag where we may include something like an ID:</p>
+                                <code>
+                                    <ComponentName componentName={componentName} key={componentName.id} />
+                                </code>
+                    </li>
+                </ul>
+                <h5>2.2.1.1 PropTypes</h5>
+                    <ul>
+                        <li>Provides validation to the props used inside the component.</li>
+                        <li>
+                            It is needed to be imported in order to be used.
+                                <code>
+                                    import PropTypes from 'prop-types';
+                                </code>
+                        </li>
+                        <li>
+                            Simple define the PropTypes object before the export statement.
+                                <code>
+                                    componentName.propTypes = {
+                                        propName: PropTypes.dataTypeOfProp.isRequired
+                                    }
+                                </code>
+                                
+                            <p>eg.:</p>
+                                <code>
+                                    TodoItem.propTypes = {
+                                        todo: PropTypes.object.isRequired
+                                    }
+                                </code>
+                                <p>The above code uses <code>isRequired</code> therefore, the component will give out an error if the prop is not present.</p>
+
+                        </li>
+                    </ul>
+            
+            <h4>2.2.2. Updating State Data</h3>
+                <ul>
+                    <li>We use <code>setState()</code> method in order to update the state data. Eg.:</li>
+                        <code>
+                            this.setState({ stateProperty: this.state.stateProperty.map((x) => {
+                                //Do update.
+                            })})
+                        </code>
+                    <li>Make sure to use the following code with an arrow function declaration of the method in which you plan to use it; if it is not the render method.</li>
+                </ul>
+        
+        <h3>2.3. Component Tree</h2>
+            <ul>
+                <li>In React we often need to include components inside other components.</li>
+                <li>A component can include multiple other components.</li>
+                <li>This can be visualized as a tree like structure.</li>
+                <li>This is what we call the <strong>Component Tree</strong> in React.</li>
+            </ul>
+            
+            <h4>2.3.1. Sending Variables To Parent Component.</h4>
+                <ul>
+                    <li>We can do this by creating a method in the parent component.</li>
+                    <li>The method may take in some formal parameters in it's definition which can be sent via a child component.</li>
+                        <code>
+                            customMethod = (var1) => {
+                                //Do some operation.
+                            }
+                        </code>
+                    <li>After defining the method we send it the child component as a prop in it's component tag inside the parent component.</li>
+                        <code>
+                            <childComponent customMethod={this.customMethod}/>
+                        </code>
+                    <li>Child component can then access this method as a prop and then pass in variables by binding them to the prop including a <code>this</code> keyword.</li>
+                        <code>
+                            <input type="button" onclick={this.props.customMethod.bind(this,var1)}/>
+                        </code>
+                </ul>

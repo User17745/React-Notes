@@ -67,7 +67,7 @@ layout: default
 
             <h4>1.5.3. index.js</h4>
                 <ul>
-                    <li>Sits in src directory of the project.</li>
+                    <li>Sits in <strong>src</strong> directory of the project.</li>
                     <li>It produces the code that is output onto to the index.html</li>
                     <li>We import the libraries(react, react-dom, etc,.), css files, main App component, etc., the beginning of this file. Note: the App component is the main component that wraps around everything.</li>
                     <li>It also renders the App component <code><App /></code> into the root div of index.html</li>
@@ -75,7 +75,7 @@ layout: default
 
             <h4>1.5.4. App.js</h4>
                 <ul>
-                    <li>Sits in src directory of the project.</li>
+                    <li>Sits in <strong>src</strong> directory of the project.</li>
                     <li>It is the component which is included by the index.js file into the root div of the index.html file.</li>
                     <li>First of all, we import React and React Component class into it.</li>
                     <li>We also import the app logo and all wide css <strong>App.css</strong>.</li>
@@ -103,8 +103,8 @@ layout: default
                         render(){
                             return (
                                 <div>
-                                    <h3>{ this.state.title }</h3>
-                                    <p>{ this.state.body }</p>
+                                    { this.state.title }
+                                    { this.state.body }
                                 </div>
                             )
                         }

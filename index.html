@@ -311,3 +311,116 @@ layout: default
                             <input type="button" onclick={this.props.customMethod.bind(this,var1)}/>
                         </code>
                 </ul>
+
+        <h2>2.4. Routing in ReactJS</h2>
+            <ul>
+                <li>Routing is specifies what URL paths in our application lead to which part of the app.</li>
+                <li>We use <code>react-router-dom</code> for routing in ReactJS.</li>
+                <li>
+                    <p>Since, it is not a part of React, we can install it manualy using npm:</p>
+                        <code>
+                            npm install react-router-dom
+                        </code>
+                </li>
+                <li>
+                    <p>Once it is installed, import the <code>BrowserRouter</code> and the <code>Route</code> classes wherever needed in the app (mostly App.js).</p>
+                        <code>
+                            import { BrowserRouter as Router, Route } from 'react-router-dom';
+                        </code>
+                        <p>Note: By using typing <code>BrowserRouter as Router</code> we are making a shorthand for the BrowserRouter.</p>
+                </li>
+                <li>
+                    <p>Now you can use the BrowserRouter in the render method of the component wrapping all of it's content into the BrowserRouter.</p>
+                        <code>
+                            render() {
+                                return {
+                                    <div class="App">
+                                        <BrowserRouter>
+                                            //JSX Code
+                                        </BrowserRouter>
+                                    </div>
+                                }
+                            }
+                        </code>
+                        
+                    <p>Or if you decide to bring it in as Router like we did in our import statement earlier, you can:</p>
+                        <code>
+                            render() {
+                                return {
+                                    <div class="App">
+                                        <Router>
+                                            //JSX Code
+                                        </Router>
+                                    </div>
+                                }
+                            }
+                        </code>
+                </li>
+                <li>
+                    <p>To add a route to a single component you can add a <strong>Component Prop</strong></p>
+                        <code>
+                            <Route path="/about" component={About} />
+                        </code>
+                </li>
+                <li>
+                    <p>If the render method is including more than one component then you have to use <strong>Render Props</strong> like:</p>
+                        <code>
+                            <Route exact path="/" render={props => (
+                                <React.Fragment>
+                                    <component1 />
+                                    <component2 />
+                                    <component3 />
+                                </React.Fragment>
+                            )} />
+                        </code>
+                    
+                    <p>This was, the single route <code>/</code> will render all the components (3 in this case).</p>
+                </li>
+                <li><code>exact</code> keyword is used to make it so that the components are rendered only at that exact router. Otherwise, for instance, if we do not include it in the root path (<code>/</code>), the components included within that route will be rendered in every URL which start of with the root, eg.: <code>/about</code></li>
+            </ul>
+            <h3>2.4.1 Links</h3>
+                <ul>
+                    <li>When using routing, we don't simply anchor tags for linking different routes, instead we use <strong>Links</strong>.</li>
+                    <li>
+                        <p>We need to first import it into the component:</p>
+                            <code>
+                                import { Link } from 'react-router-dom';
+                            </code>
+                    </li>
+                    <li>
+                        <p>Whenever you need to use the link, you can do it like so:</p>
+                            <code>
+                                <Link to="/path-to-component">Component</Link>
+                            </code>
+                    </li>
+                </ul>
+            
+
+    <h2>3. Useful Tools</h2>
+        <p>Here is a list of some useful tools you can use while developing in ReactJS:</p>
+        <ol>
+            <h3>3.1. <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en" target="_blank">React Developer Tools</a></h3>
+                <p>It is chrome plugin that helps us inspecting and debugging our React App. You can use it we component states and manipulate state data from within the browser console section.</p>
+
+            <h3>3.2. <a href="https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets" target="_blank">ES7 React/Redux/GraphQL/React-Native snippets</a></h3>
+                <p>This VS Code extension provides you JavaScript and React/Redux snippets in ES7 with Babel plugin features.</p>
+
+            <h3>3.3. <a href="https://www.npmjs.com/package/uuid" target="_blank">UUID</a></h3>
+                <ul>
+                    <li>UUID is a node package which allows simple and fast generation of RFC4122 UUIDs (Universally Unique IDentifier)</li>
+                    <li>Can be used to make random and unique IDs/Strings wherever needed.</li>
+                    <li>
+                        <p>We can install it using:</p>
+                            <code>
+                                npm install uuid
+                            </code>
+                    </li>
+                    <li>
+                        <p>Simply import the it into the component:</p>
+                            <code>
+                                import uuid from 'uuid';
+                            </code>
+                    </li>
+                    <li>Do <code>uuid.v4()</code> (if version 4 is required) wherever you need the UUID and it will return the UUID.</li>
+                </ul>
+        </ol>

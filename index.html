@@ -312,7 +312,7 @@ layout: default
                         </code>
                 </ul>
 
-        <h2>2.4. Routing in ReactJS</h2>
+        <h3>2.4. Routing in ReactJS</h3>
             <ul>
                 <li>Routing is specifies what URL paths in our application lead to which part of the app.</li>
                 <li>We use <code>react-router-dom</code> for routing in ReactJS.</li>
@@ -395,6 +395,57 @@ layout: default
                     </li>
                 </ul>
             
+        <h3>2.5. HTTP Requests & Working With RESTful APIs</h3>
+            <ul>
+                <li>ReactJS is meant for front-end development which means in order for our application to be useful  we have to use some sort of a bank-end in place (it may be NodeJS, FireBase, Laravel, etc,.).</li>
+                <li>Typically, front-end and back-end interact using REST APIs and they work over HTTP requests.</li>
+                <li>In order to make requests we can either go with JS' default way of using FetchAPI or you can use <strong>axios</strong> which is an HTTPS library (which we are going to use).</li>
+            </ul>
+            
+            <h4>2.5.1. Implementing AXIOS library</h4>
+                <ul>
+                    <li>
+                        <p>To install axios, use:</p>
+                            <code>
+                                npm i axios
+                            </code>
+                    </li>
+                    <li>
+                        <p>In order to fetch data using axios, we need to first import it into our component.</p>
+                            <code>import axios from 'axios';</code>
+                    </li>    
+                    <li>We use axios in <code>componentDidMount</code> life-cycle method of the component.</li>
+                </ul>
+                    
+                    <h5>2.5.1.1 Fetch Request Using Axios (Read)</h5>    
+                        <code>
+                            componentDidMount() {
+                                const apiUrl = 'some.url/api/...';
+
+                                axios.get(apiUrl)
+                                    .then((response) => console.log(response.data));
+                            }
+                        </code>
+                        
+                    <h5>2.5.1.2. Post Request Using Axios (Update)</h5>
+                        <code>
+                            const updateReq = {
+                                property1: value1,
+                                property2: value2,
+                                property3: value3,
+                                property4: value4
+                            }
+                            axios.post(apiUrl, updateReq)
+                                .then(response => this.setState({ obj : [...this.state.obj, response.data] })); //Or you can do any other operation in "then" that you wish.
+                        </code>
+                    
+                    <h5>2.5.1.3. Delete Request Using Axios (Delete)</h5>
+                        <code>
+                            const apiUrl = `some.Url/api/${id}`;
+                            axios.delete(apiUrl)
+                                .then(//Update State/UPI);
+                        </code>
+                        <p>Note: We often need to send an ID inside the API URL in order to delete something from the server.</p>
 
     <h2>3. Useful Tools</h2>
         <p>Here is a list of some useful tools you can use while developing in ReactJS:</p>
